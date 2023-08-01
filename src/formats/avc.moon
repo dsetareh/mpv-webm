@@ -49,9 +49,8 @@ class AVCNVENC extends Format
 		@acceptsBitrate = true
 	getFlags: =>
 		{
-			-- nvenc fix for my machine
-			-- nothing above p2 works for me
-			"--ovcopts-add=preset=p2",
+			-- nvenc fix thanks to advice from plugin creator (https://github.com/ekisu/mpv-webm/pull/175)
+			"--ovcopts-add=bf=0",
 			-- rest is stuff to make the encode better (hopefully)
 			"--ovcopts-add=profile=high",
 			"--ovcopts-add=rc=vbr",
