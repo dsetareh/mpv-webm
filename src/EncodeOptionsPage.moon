@@ -170,16 +170,16 @@ class EncodeOptionsPage extends Page
 		-- by dicts on Lua.
 		@options = {
 			{"output_format", Option("list", "Output Format", options.output_format, formatOpts)}
-			{"twopass", Option("bool", "Two Pass", options.twopass)},
-			{"apply_current_filters", Option("bool", "Apply Current Video Filters", options.apply_current_filters)}
+			-- {"twopass", Option("bool", "Two Pass", options.twopass)},
+			-- {"apply_current_filters", Option("bool", "Apply Current Video Filters", options.apply_current_filters)}
 			{"scale_height", Option("list", "Scale Height", options.scale_height, scaleHeightOpts)},
-			{"strict_filesize_constraint", Option("bool", "Strict Filesize Constraint", options.strict_filesize_constraint)},
-			{"write_filename_on_metadata", Option("bool", "Write Filename on Metadata", options.write_filename_on_metadata)},
-			{"target_filesize", Option("int", "Target Filesize", options.target_filesize, filesizeOpts)},
+			-- {"strict_filesize_constraint", Option("bool", "Strict Filesize Constraint", options.strict_filesize_constraint)},
+			-- {"write_filename_on_metadata", Option("bool", "Write Filename on Metadata", options.write_filename_on_metadata)},
+			-- {"target_filesize", Option("int", "Target Filesize", options.target_filesize, filesizeOpts)},
 			{"crf", Option("int", "CRF", options.crf, crfOpts)},
 			{"fps", Option("list", "FPS", options.fps, fpsOpts)},
 			{"gif_dither", Option("list", "GIF Dither Type", options.gif_dither, gifDitherOpts, -> @options[1][2]\getValue! == "gif")},
-			{"force_square_pixels", Option("bool", "Force Square Pixels", options.force_square_pixels)},
+			-- {"force_square_pixels", Option("bool", "Force Square Pixels", options.force_square_pixels)},
 		}
 
 		@keybinds =
@@ -232,12 +232,13 @@ class EncodeOptionsPage extends Page
 		ass = assdraw.ass_new()
 		ass\new_event()
 		self\setup_text(ass)
-		ass\append("#{bold('Options:')}\\N\\N")
+		ass\append("\\N\\N")
 		for i, optPair in ipairs @options
 			opt = optPair[2]
 			if opt\optVisible!
 				opt\draw(ass, @currentOption == i)
-		ass\append("\\N▲ / ▼: navigate\\N")
-		ass\append("#{bold('ENTER:')} confirm options\\N")
-		ass\append("#{bold('ESC:')} cancel\\N")
+		-- I KNOW HOW TO USE ARROW KEYS
+		-- ass\append("\\N▲ / ▼: navigate\\N")
+		-- ass\append("#{bold('ENTER:')} confirm options\\N")
+		-- ass\append("#{bold('ESC:')} cancel\\N")
 		mp.set_osd_ass(window_w, window_h, ass.text)
