@@ -69,7 +69,7 @@ local options = {
 	non_strict_additional_flags = "",
 	-- Display the encode progress, in %. Requires run_detached to be disabled.
 	-- On Windows, it shows a cmd popup. "auto" will display progress on non-Windows platforms.
-	display_progress = "auto",
+	display_progress = "yes",
 	-- The font size used in the menu. Isn't used for the notifications (started encode, finished encode etc)
 	font_size = 40,
 	margin = 10,
