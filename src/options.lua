@@ -47,7 +47,7 @@ local options = {
 	-- hevc
 	-- webm-vp9 (libvpx-vp9/libopus)
 	-- mp4 (h264/AAC)
-	-- mpv-compat (same as above, but with better compatibility across devices)
+	-- mp4-compat (same as above, but with better compatibility across devices)
 	-- mp4-nvenc (h264-NVENC/AAC)
 	-- webm-vp8 (libvpx/libvorbis)
 	-- gif
