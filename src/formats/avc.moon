@@ -12,7 +12,7 @@ class AVC extends Format
 			"--ovcopts-add=threads=#{options.threads}"
 		}
 
-formats["avc"] = AVC!
+formats["mp4"] = AVC!
 
 class AVCNVENC extends Format
 	new: =>
@@ -23,4 +23,4 @@ class AVCNVENC extends Format
 		@outputExtension = "mp4"
 		@acceptsBitrate = true
 
-formats["avc-nvenc"] = AVCNVENC!
+formats["mp4-nvenc"] = AVCNVENC!
