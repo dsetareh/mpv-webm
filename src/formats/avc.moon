@@ -1,6 +1,22 @@
 class AVC extends Format
 	new: =>
-		@displayName = "AVC (h264/AAC)"
+		@displayName = "h264/AAC"
+		@supportsTwopass = true
+		@videoCodec = "libx264"
+		@audioCodec = "aac"
+		@outputExtension = "mp4"
+		@acceptsBitrate = true
+
+	getFlags: =>
+		{
+			"--ovcopts-add=threads=#{options.threads}",
+		}
+
+formats["mp4"] = AVC!
+
+class AVCCOMPAT extends Format
+	new: =>
+		@displayName = "h264/AAC (COMPAT)"
 		@supportsTwopass = true
 		@videoCodec = "libx264"
 		@audioCodec = "aac"
@@ -21,15 +37,27 @@ class AVC extends Format
 			"--ovcopts-add=refs=2"
 		}
 
-formats["mp4"] = AVC!
+formats["mp4-compat"] = AVCCOMPAT!
 
 class AVCNVENC extends Format
 	new: =>
-		@displayName = "AVC (h264-NVENC/AAC)"
+		@displayName = "h264/AAC (NVENC)"
 		@supportsTwopass = true
 		@videoCodec = "h264_nvenc"
 		@audioCodec = "aac"
 		@outputExtension = "mp4"
 		@acceptsBitrate = true
-
+	getFlags: =>
+		{
+			-- nvenc fix for my machine
+			-- nothing above p2 works for me
+			"--ovcopts-add=preset=p2",
+			-- rest is stuff to make the encode better (hopefully)
+			"--ovcopts-add=profile=high",
+			"--ovcopts-add=rc=vbr",
+			"--ovcopts-add=refs=2",
+			"--ovcopts-add=tune=hq",
+			-- fix crf for nvenc
+			"--ovcopts-add=cq=#{options.crf}"
+		}
 formats["mp4-nvenc"] = AVCNVENC!

@@ -158,7 +158,7 @@ class EncodeOptionsPage extends Page
 		-- original version renamed h264 to avc, and then forgot to put it in the docs...
 		-- this is a fix for my sanity
 		-- OLD: {"av1", "hevc", "webm-vp9", "avc", "avc-nvenc", "webm-vp8", "gif", "mp3", "raw"}
-		formatIds = {"av1", "hevc", "webm-vp9", "mp4", "mp4-nvenc", "webm-vp8", "gif", "mp3", "raw"}
+		formatIds = {"av1", "hevc", "webm-vp9", "mp4", "mp4-nvenc", "mp4-compat", "webm-vp8", "gif", "mp3", "raw"}
 		formatOpts =
 			possibleValues: [{fId, formats[fId].displayName} for fId in *formatIds]
 
