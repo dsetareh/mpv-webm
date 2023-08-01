@@ -45,13 +45,11 @@ class MainPage extends Page
 		ass\new_event()
 		self\setup_text(ass)
 		-- ass\append("#{bold('WebM maker')}\\N\\N")
-		ass\append("#{bold('c:')} crop\\N")
-		ass\append("#{bold('1:')} start (#{seconds_to_time_string(@startTime)})\\N")
-		ass\append("#{bold('2:')} end (#{seconds_to_time_string(@endTime)})\\N")
-		ass\append("#{bold('o:')} options\\N")
-		-- ass\append("#{bold('p:')} preview\\N")
-		ass\append("#{bold('e:')} encode\\N\\N")
-		-- ass\append("#{bold('ESC:')} close\\N")
+		ass\append("\\N[#{bold(seconds_to_time_string(@startTime))} - #{bold(seconds_to_time_string(@endTime))}]\\N")
+		ass\append("\\N(#{bold(seconds_to_time_string(@endTime - @startTime))})\\N\\N")
+		ass\append("#{bold('[C]')}rop\\N")
+		ass\append("#{bold('[O]')}ptions\\N")
+		ass\append("#{bold('[E]')}ncode\\N")
 		mp.set_osd_ass(window_w, window_h, ass.text)
 	
 	show: =>
