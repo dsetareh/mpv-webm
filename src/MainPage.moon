@@ -61,7 +61,7 @@ class MainPage extends Page
 			ass\append("(#{bold('Invalid length!')})\\N")
 		else	
 			ass\append("(#{bold(normalized_length_to_time_string(@endTime - @startTime))})\\N")
-		ass\append("#{source_height}p#{source_fps} -> #{output_height}p#{output_fps}\\N\\N")
+		ass\append("#{source_height}p#{math.floor(source_fps)} -> #{output_height}p#{math.floor(output_fps)}\\N\\N")
 		ass\append("#{bold('[C]')}rop\\N")
 		ass\append("#{bold('[O]')}ptions\\N")
 		ass\append("#{bold('[E]')}ncode\\N")
