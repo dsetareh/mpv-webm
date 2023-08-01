@@ -24,7 +24,7 @@ local options = {
 	-- Property expansion is supported (with %{} at top level, ${} when nested), see https://mpv.io/manual/master/#property-expansion
 	output_template = "CLIP_%F-[%s-%e]",
 	-- Scale video to a certain height, keeping the aspect ratio. -1 disables it.
-	scale_height = 1080,
+	scale_height = 900,
 	-- Change the FPS of the output video, dropping or duplicating frames as needed.
 	-- -1 means the FPS will be unchanged from the source.
 	fps = -1,
@@ -64,7 +64,7 @@ local options = {
 	additional_flags = "",
 	-- Constant Rate Factor (CRF). The value meaning and limits may change,
 	-- from codec to codec. Set to -1 to disable.
-	crf = 23,
+	crf = 22,
 	-- Useful for flags that may impact output filesize, such as qmin, qmax etc
 	-- Won't be applied when strict_filesize_constraint is on.
 	non_strict_additional_flags = "",
