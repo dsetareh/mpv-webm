@@ -24,6 +24,26 @@ seconds_to_time_string = (seconds, no_ms, full) ->
 		ret = string.format("%d:%s", math.floor(seconds / 3600), ret)
 	ret
 
+-- correct clip length by subtracting 1 frames worth of time as best we can
+normalized_length_to_time_string = (seconds) ->
+	if seconds < 0
+		return "unknown"
+	-- first, check if user set an fps value
+	normalizedfps = options.fps
+	-- if user wants source fps, get it
+	if options.fps == -1
+		normalizedfps = mp.get_property_number("container-fps")
+	-- if the number is still garbage just assume 60
+	if normalizedfps < 1 or normalizedfps > 400
+		normalizedfps = 60
+	ret = ""
+	normalizedseconds = ((seconds * 1000) - ((seconds * 1000) % (1000 / normalizedfps))) / 1000
+	ret = string.format(".%03d", normalizedseconds * 1000 % 1000)
+	ret = string.format("%02d:%02d%s", math.floor(normalizedseconds / 60) % 60, math.floor(normalizedseconds) % 60, ret)
+	if seconds > 3600
+		ret = string.format("%d:%s", math.floor(normalizedseconds / 3600), ret)
+	ret
+
 seconds_to_path_element = (seconds, no_ms, full) ->
 	time_string = seconds_to_time_string(seconds, no_ms, full)
 	-- Needed for Windows (and maybe for Linux? idk)
