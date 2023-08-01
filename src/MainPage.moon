@@ -45,11 +45,23 @@ class MainPage extends Page
 		ass\new_event()
 		self\setup_text(ass)
 		-- ass\append("#{bold('WebM maker')}\\N\\N")
-		ass\append("\\N[#{bold(seconds_to_time_string(@startTime))} - #{bold(seconds_to_time_string(@endTime))}]\\N")
+		ass\append("\\N[#{bold(seconds_to_time_string(@startTime))}-#{bold(seconds_to_time_string(@endTime))}]")
+		-- calculate video properties
+		source_fps = mp.get_property_number("container-fps")
+		osd_dims = mp.get_property_native("osd-dimensions")
+		source_height = osd_dims["h"] - osd_dims["mt"] - osd_dims["mb"]
+		output_height = options.scale_height
+		output_fps = options.fps
+		if output_height < 0
+			output_height = source_height
+		if output_fps < 0
+			output_fps = source_fps
+		-- draw osd
 		if @startTime >= @endTime or @startTime == @endTime
-			ass\append("\\N(#{bold('Invalid length!')})\\N\\N")
+			ass\append("(#{bold('Invalid length!')})\\N")
 		else	
-			ass\append("\\N(#{bold(normalized_length_to_time_string(@endTime - @startTime))})\\N\\N")
+			ass\append("(#{bold(normalized_length_to_time_string(@endTime - @startTime))})\\N")
+		ass\append("#{source_height}p#{source_fps} -> #{output_height}p#{output_fps}\\N\\N")
 		ass\append("#{bold('[C]')}rop\\N")
 		ass\append("#{bold('[O]')}ptions\\N")
 		ass\append("#{bold('[E]')}ncode\\N")

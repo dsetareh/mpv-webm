@@ -1,6 +1,5 @@
 # custom mpv-webm
-https://github.com/ekisu/mpv-webm, but with minor changes for my own use
-
+my improved version of https://github.com/ekisu/mpv-webm
 
 | [Download Script](https://github.com/dsetareh/mpv-webm/releases/download/latest/webm.lua) | [Download Config](https://github.com/dsetareh/mpv-webm/releases/download/latest/webm.conf)|
 | ----------- | ----------- |
@@ -9,11 +8,14 @@ https://github.com/ekisu/mpv-webm, but with minor changes for my own use
 - various `mp4-nvenc` fixes
     - actually works now
     - crf works too
-- adds `mp4-compat` preset for increased compatibility
+- adds `mp4-compat` preset for compatibility with older devices
 - osd revamp
-    - less useless text
-    - shows video length
-    - removed options I personally never use
-- more fps and resolution options (900p, 1fps, 5fps, etc...)
+    - shows output video length
+    - shows source video height and fps
+    - shows output video height and fps
+    - less useless text (you'll need to memorize the keybinds)
+    - cleaned up options page
+- more output fps and resolution options (900p, 144fps, 5fps, etc...)
+- other minor changes
 
-<img src="/img/sample.png" alt="Main UI Example" width="600px"/>
+<img src="/img/main_osd.png" alt="Main UI Example" width="600px"/>
