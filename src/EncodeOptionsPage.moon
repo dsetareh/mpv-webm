@@ -150,7 +150,7 @@ class EncodeOptionsPage extends Page
 				[-1]: "disabled"
 
 		fpsOpts =
-			possibleValues: {{-1, "source"}, {15}, {24}, {30}, {48}, {50}, {60}, {120}, {240}}
+			possibleValues: {{-1, "source"}, {1}, {5}, {10}, {15}, {24}, {30}, {48}, {50}, {60}, {120}, {240}}
 
 		-- I really dislike hardcoding this here, but, as said below, order in dicts isn't
 		-- guaranteed, and we can't use the formats dict keys.
