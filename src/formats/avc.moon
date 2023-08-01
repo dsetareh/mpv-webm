@@ -9,7 +9,16 @@ class AVC extends Format
 
 	getFlags: =>
 		{
-			"--ovcopts-add=threads=#{options.threads}"
+			"--ovcopts-add=threads=#{options.threads}",
+
+			-- everything below are personal hardcoded ffmpeg opts
+			-- due to one person having issues watching clips
+			-- (dont know which one of these fixed it, and cant recreate issue)
+            -- see: https://github.com/mpv-player/mpv/blob/master/DOCS/encoding.rst
+			"--ovcopts-add=preset=medium",
+			"--ovcopts-add=profile=baseline",
+			"--ovcopts-add=level=41",
+			"--ovcopts-add=refs=2"
 		}
 
 formats["mp4"] = AVC!

@@ -66,9 +66,7 @@ local options = {
 	crf = 23,
 	-- Useful for flags that may impact output filesize, such as qmin, qmax etc
 	-- Won't be applied when strict_filesize_constraint is on.
-	-- personal hardcoded ffmpeg opts due to one person having issues watching clips
-    -- see: https://github.com/mpv-player/mpv/blob/master/DOCS/encoding.rst
-	non_strict_additional_flags = "--ovcopts-add=preset=medium --ovcopts-add=profile=baseline --ovcopts-add=level=41 --ovcopts-add=refs=2",
+	non_strict_additional_flags = "",
 	-- Display the encode progress, in %. Requires run_detached to be disabled.
 	-- On Windows, it shows a cmd popup. "auto" will display progress on non-Windows platforms.
 	display_progress = "auto",
