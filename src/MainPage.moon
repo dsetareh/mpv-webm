@@ -46,7 +46,10 @@ class MainPage extends Page
 		self\setup_text(ass)
 		-- ass\append("#{bold('WebM maker')}\\N\\N")
 		ass\append("\\N[#{bold(seconds_to_time_string(@startTime))} - #{bold(seconds_to_time_string(@endTime))}]\\N")
-		ass\append("\\N(#{bold(seconds_to_time_string(@endTime - @startTime))})\\N\\N")
+		if @startTime >= @endTime or @startTime == @endTime
+			ass\append("\\N(#{bold('Invalid length!')})\\N\\N")
+		else	
+			ass\append("\\N(#{bold(seconds_to_time_string(@endTime - @startTime))})\\N\\N")
 		ass\append("#{bold('[C]')}rop\\N")
 		ass\append("#{bold('[O]')}ptions\\N")
 		ass\append("#{bold('[E]')}ncode\\N")
