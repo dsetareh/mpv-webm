@@ -141,6 +141,7 @@ get_playback_options = ->
 
 	return ret
 
+-- not gonna try to fix this, but it would be the better method
 get_speed_flags = ->
 	ret = {}
 	speed = mp.get_property_native("speed")
@@ -199,8 +200,8 @@ get_video_encode_flags = (format, region) ->
 		append(flags, {
 			"--vf-add=#{f}"
 		})
-
-	append(flags, get_speed_flags!)
+	-- old (better) method
+	-- append(flags, get_speed_flags!)
 	return flags
 
 calculate_bitrate = (active_tracks, format, length) ->
