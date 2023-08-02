@@ -16,6 +16,7 @@ my improved version of https://github.com/ekisu/mpv-webm
     - less useless text (you'll need to memorize the keybinds)
     - cleaned up options page
 - more output fps and resolution options (900p, 144fps, 5fps, etc...)
+- speed controls (no guarantees this works)
 - other minor changes
 
 <img src="/img/main_osd.png" alt="Main UI Example" width="600px"/>

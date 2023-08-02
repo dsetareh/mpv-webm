@@ -10,7 +10,7 @@ class AVC extends Format
 	getFlags: =>
 		{
 			"--ovcopts-add=threads=#{options.threads}",
-			"--vf=lavfi=[setpts=#{1 / options.video_speed}*PTS]",
+			"--vf=lavfi=[setpts=#{1.0 / options.video_speed}*PTS]",
 			"--af=lavfi=[atempo=#{options.video_speed}]",
 		}
 
