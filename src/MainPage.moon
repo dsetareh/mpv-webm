@@ -46,10 +46,9 @@ class MainPage extends Page
 		self\setup_text(ass)
 		-- ass\append("#{bold('WebM maker')}\\N\\N")
 		ass\append("\\N[#{bold(seconds_to_time_string(@startTime))}-#{bold(seconds_to_time_string(@endTime))}]")
-		-- calculate video properties
+		-- get source and output video properties
 		source_fps = mp.get_property_number("container-fps")
-		osd_dims = mp.get_property_native("osd-dimensions")
-		source_height = osd_dims["h"] - osd_dims["mt"] - osd_dims["mb"]
+		source_height = mp.get_property("height")
 		output_height = options.scale_height
 		output_fps = options.fps
 		if output_height < 0
