@@ -259,8 +259,8 @@ encode = (region, startTime, endTime) ->
 
 	command = {
 		"mpv", path,
-		"--start=" .. seconds_to_time_string(startTime, false, true),
-		"--end=" .. seconds_to_time_string(endTime, false, true),
+		"--start=" .. seconds_to_time_string(startTime / options.video_speed, false, true),
+		"--end=" .. seconds_to_time_string(endTime / options.video_speed, false, true),
 		-- When loop-file=inf, the encode won't end. Set this to override.
 		"--loop-file=no",
 		-- Same thing with --pause

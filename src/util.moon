@@ -18,11 +18,10 @@ seconds_to_time_string = (seconds, no_ms, full) ->
 	if seconds < 0
 		return "unknown"
 	ret = ""
-	normalized_seconds = seconds / options.video_speed
-	ret = string.format(".%03d", normalized_seconds * 1000 % 1000) unless no_ms
-	ret = string.format("%02d:%02d%s", math.floor(normalized_seconds / 60) % 60, math.floor(normalized_seconds) % 60, ret)
+	ret = string.format(".%03d", seconds * 1000 % 1000) unless no_ms
+	ret = string.format("%02d:%02d%s", math.floor(seconds / 60) % 60, math.floor(seconds) % 60, ret)
 	if full or seconds > 3600
-		ret = string.format("%d:%s", math.floor(normalized_seconds / 3600), ret)
+		ret = string.format("%d:%s", math.floor(seconds / 3600), ret)
 	ret
 
 -- correct clip length by subtracting 1 frames worth of time as best we can
