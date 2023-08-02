@@ -153,12 +153,10 @@ class EncodeOptionsPage extends Page
 		fpsOpts =
 			possibleValues: {{-1, "source"}, {1}, {5}, {10}, {15}, {24}, {30}, {48}, {50}, {60}, {120}, {144}, {240}}
 
-		-- I really dislike hardcoding this here, but, as said below, order in dicts isn't
-		-- guaranteed, and we can't use the formats dict keys.
+		speedOpts =
+			possibleValues: {{0.5, "0.5x"}, {0.75, "0.75x"}, {1, "1x"}, {1.25, "1.25x"}, {1.5, "1.5x"}, {1.75, "1.75x"}, {2, "2x"}}
 
-		-- original version renamed h264 to avc, and then forgot to put it in the docs...
-		-- this is a fix for my sanity
-		-- OLD: {"av1", "hevc", "webm-vp9", "avc", "avc-nvenc", "webm-vp8", "gif", "mp3", "raw"}
+
 		formatIds = {"av1", "hevc", "webm-vp9", "mp4", "mp4-nvenc", "mp4-compat", "webm-vp8", "gif", "mp3", "raw"}
 		formatOpts =
 			possibleValues: [{fId, formats[fId].displayName} for fId in *formatIds]
@@ -179,6 +177,7 @@ class EncodeOptionsPage extends Page
 			-- {"target_filesize", Option("int", "Target Filesize", options.target_filesize, filesizeOpts)},
 			{"crf", Option("int", "CRF", options.crf, crfOpts)},
 			{"fps", Option("list", "FPS", options.fps, fpsOpts)},
+			{"video_speed", Option("list", "Video Speed", options.video_speed, speedOpts, -> @options[1][2]\getValue! == "mp4")},
 			{"gif_dither", Option("list", "GIF Dither Type", options.gif_dither, gifDitherOpts, -> @options[1][2]\getValue! == "gif")},
 			-- {"force_square_pixels", Option("bool", "Force Square Pixels", options.force_square_pixels)},
 		}
@@ -238,8 +237,4 @@ class EncodeOptionsPage extends Page
 			opt = optPair[2]
 			if opt\optVisible!
 				opt\draw(ass, @currentOption == i)
-		-- I KNOW HOW TO USE ARROW KEYS
-		-- ass\append("\\N▲ / ▼: navigate\\N")
-		-- ass\append("#{bold('ENTER:')} confirm options\\N")
-		-- ass\append("#{bold('ESC:')} cancel\\N")
 		mp.set_osd_ass(window_w, window_h, ass.text)

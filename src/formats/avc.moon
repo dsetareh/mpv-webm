@@ -10,6 +10,7 @@ class AVC extends Format
 	getFlags: =>
 		{
 			"--ovcopts-add=threads=#{options.threads}",
+			"--vf=lavfi=[setpts=#{1 / options.video_speed}*PTS]"
 		}
 
 formats["mp4"] = AVC!

@@ -80,6 +80,8 @@ local options = {
 	-- Force square pixels on output video
 	-- Some players like recent Firefox versions display videos with non-square pixels with wrong aspect ratio
 	force_square_pixels = false,
+
+	video_speed = 1,
 }
 
 mpopts.read_options(options)
