@@ -4,6 +4,8 @@ class MainPage extends Page
 			"c": self\crop
 			"1": self\setStartTime
 			"2": self\setEndTime
+			"!": self\jumpToStartTime
+			"@": self\jumpToEndTime
 			"o": self\changeOptions
 			"p": self\preview
 			"e": self\encode
@@ -23,7 +25,13 @@ class MainPage extends Page
 		if @visible
 			self\clear!
 			self\draw!
-	
+
+	jumpToStartTime: =>
+		mp.set_property("time-pos", @startTime)
+
+	jumpToEndTime: =>
+		mp.set_property("time-pos", @endTime)
+
 	setupStartAndEndTimes: =>
 		if mp.get_property_native("duration")
 			-- Note: there exists an option called rebase-start-time, which, when set to no,
