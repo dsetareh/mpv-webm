@@ -165,6 +165,11 @@ class EncodeOptionsPage extends Page
 			possibleValues: {{0, "bayer_scale 0"}, {1, "bayer_scale 1"},
 			{2, "bayer_scale 2"}, {3, "bayer_scale 3"}, {4, "bayer_scale 4"}, {5, "bayer_scale 5"}, {6, "sierra2_4a"}}
 
+		mp4PresetOpt =
+			possibleValues: {{0, "veryfast"}, {1, "faster"}, {2, "fast"}, {3, "medium"}, {4, "slow"}, {5, "slower"}, {6, "veryslow"}}
+		nvencPresetOpt =
+			possibleValues: {{1, "P1"}, {2, "P2"}, {3, "P3"}, {4, "P4"}, {5, "P5"}, {6, "P6"}, {7, "P7"}}
+
 		-- This could be a dict instead of a array of pairs, but order isn't guaranteed
 		-- by dicts on Lua.
 		@options = {
@@ -178,6 +183,8 @@ class EncodeOptionsPage extends Page
 			{"crf", Option("int", "CRF", options.crf, crfOpts)},
 			{"fps", Option("list", "FPS", options.fps, fpsOpts)},
 			{"video_speed", Option("list", "Video Speed", options.video_speed, speedOpts, -> @options[1][2]\getValue! == "mp4" or @options[1][2]\getValue! == "mp4-compat")},
+			{"mp4_preset", Option("list", "Preset", options.mp4_preset, mp4PresetOpt, -> @options[1][2]\getValue! == "mp4" or @options[1][2]\getValue! == "mp4-compat")},
+			{"nvenc_preset", Option("list", "Preset", options.nvenc_preset, nvencPresetOpt, -> @options[1][2]\getValue! == "mp4-nvenc")},
 			{"gif_dither", Option("list", "GIF Dither Type", options.gif_dither, gifDitherOpts, -> @options[1][2]\getValue! == "gif")},
 			-- {"force_square_pixels", Option("bool", "Force Square Pixels", options.force_square_pixels)},
 		}

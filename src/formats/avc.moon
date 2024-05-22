@@ -9,8 +9,8 @@ class AVC extends Format
 
 	getFlags: =>
 		{
-			"--ovcopts-add=threads=#{options.threads}"
-
+			"--ovcopts-add=threads=#{options.threads}",
+			"--ovcopts-add=preset=#{options.mp4_preset}"
 		}
 
 formats["mp4"] = AVC!
@@ -27,12 +27,7 @@ class AVCCOMPAT extends Format
 	getFlags: =>
 		{
 			"--ovcopts-add=threads=#{options.threads}",
-
-			-- everything below are personal hardcoded ffmpeg opts
-			-- due to one person having issues watching clips
-			-- (dont know which one of these fixed it, and cant recreate issue)
-            -- see: https://github.com/mpv-player/mpv/blob/master/DOCS/encoding.rst
-			"--ovcopts-add=preset=medium",
+			"--ovcopts-add=preset=#{options.mp4_preset}",
 			"--ovcopts-add=profile=baseline",
 			"--ovcopts-add=level=41",
 			"--ovcopts-add=refs=2"
@@ -57,7 +52,7 @@ class AVCNVENC extends Format
 			"--ovcopts-add=rc=vbr",
 			"--ovcopts-add=refs=2",
 			"--ovcopts-add=tune=hq",
-			"--ovcopts-add=preset=slow",
+			"--ovcopts-add=preset=#{options.nvenc_preset}",
 			-- fix crf for nvenc
 			"--ovcopts-add=cq=#{options.crf}"
 		}

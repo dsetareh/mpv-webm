@@ -80,7 +80,11 @@ local options = {
 	-- Force square pixels on output video
 	-- Some players like recent Firefox versions display videos with non-square pixels with wrong aspect ratio
 	force_square_pixels = false,
-
+	-- {{0, "veryfast"}, {1, "faster"}, {2, "fast"}, {3, "medium"}, {4, "slow"}, {5, "slower"}, {6, "veryslow"}}
+	-- only for mp4 and mp4-compat
+	mp4_preset = 3,
+	-- corresponds to nvenc P1-P7 presets
+	nvenc_preset = 7,
 	video_speed = 1,
 }
 
