@@ -5,6 +5,7 @@ my improved version of https://github.com/ekisu/mpv-webm
 | ----------- | ----------- |
 
 - renames `avc` and `avc-nvenc` preset back to `mp4` and `mp4-nvenc`
+- allows for custom presets (such as x264 veryfast or nvenc P7)
 - various `mp4-nvenc` fixes
     - actually works now
     - crf works too
