@@ -61,7 +61,7 @@ class CropPage extends Page
 		ass\append('{\\bord0}')
 		ass\append('{\\shad0}')
 		ass\append('{\\c&H000000&}')
-		ass\append('{\\alpha&H77}')
+		ass\append('{\\alpha&H11}')
 		-- Draw a black layer over the uncropped area
 		ass\draw_start()
 		ass\rect_cw(d.top_left.x, d.top_left.y, region.x, region.y + region.h) -- Top left uncropped area
