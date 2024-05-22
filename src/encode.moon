@@ -221,6 +221,13 @@ get_video_encode_flags = (format, region) ->
 	append(flags, get_playback_options!)
 	append(flags, get_sub_options!)
 
+	if options.video_speed != 1 and format.videoCodec == "libx264"
+		append(flags, {"--vf-add=setpts=#{1.0 / options.video_speed}*PTS"})
+		append(flags, {"--af-add=atempo=#{options.video_speed}"})
+		-- fixing this for clips (starting from middle of video) would require
+		-- more work, ill maybe do this later
+		
+		append(flags, {"--sub-speed=1/#{options.video_speed}"})
 
 	filters = get_video_filters(format, region)
 	for f in *filters
@@ -283,7 +290,8 @@ encode = (region, startTime, endTime) ->
 	if not path
 		message("No file is being played")
 		return
-
+	msg.info("startTime" .. seconds_to_time_string(startTime / options.video_speed, false, true))
+	msg.info("endTime" .. seconds_to_time_string(endTime / options.video_speed, false, true))
 	command = {
 		"mpv", path,
 		"--start=" .. seconds_to_time_string(startTime / options.video_speed, false, true),

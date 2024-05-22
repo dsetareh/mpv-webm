@@ -9,9 +9,8 @@ class AVC extends Format
 
 	getFlags: =>
 		{
-			"--ovcopts-add=threads=#{options.threads}",
-			"--vf=lavfi=[setpts=#{1.0 / options.video_speed}*PTS]",
-			"--af=lavfi=[atempo=#{options.video_speed}]",
+			"--ovcopts-add=threads=#{options.threads}"
+
 		}
 
 formats["mp4"] = AVC!
@@ -58,6 +57,7 @@ class AVCNVENC extends Format
 			"--ovcopts-add=rc=vbr",
 			"--ovcopts-add=refs=2",
 			"--ovcopts-add=tune=hq",
+			"--ovcopts-add=preset=slow",
 			-- fix crf for nvenc
 			"--ovcopts-add=cq=#{options.crf}"
 		}

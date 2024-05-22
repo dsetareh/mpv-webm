@@ -1,10 +1,10 @@
 -- Not really a Page, but reusing its functions is pretty useful
 class EncodeWithProgress extends Page
 	new: (startTime, endTime) =>
-		@startTime = startTime
-		@endTime = endTime
-		@duration = endTime - startTime
-		@currentTime = startTime
+		@startTime = (startTime / options.video_speed)
+		@endTime = (endTime / options.video_speed)
+		@duration = (endTime / options.video_speed) - (startTime / options.video_speed)
+		@currentTime = (startTime / options.video_speed)
 
 	draw: =>
 		progress = 100 * ((@currentTime - @startTime) / @duration)

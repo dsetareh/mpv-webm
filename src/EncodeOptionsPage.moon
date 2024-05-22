@@ -154,7 +154,7 @@ class EncodeOptionsPage extends Page
 			possibleValues: {{-1, "source"}, {1}, {5}, {10}, {15}, {24}, {30}, {48}, {50}, {60}, {120}, {144}, {240}}
 
 		speedOpts =
-			possibleValues: {{0.5, "0.5x"}, {0.75, "0.75x"}, {1, "1x"}, {1.25, "1.25x"}, {1.5, "1.5x"}, {1.75, "1.75x"}, {2, "2x"}}
+			possibleValues: {{0.5, "0.5x"}, {0.75, "0.75x"}, {1, "1x"}, {1.25, "1.25x"}, {1.5, "1.5x"}, {1.75, "1.75x"}, {2, "2x"}, {2.5, "2.5x"}, {3, "3x"}, {3.5, "3.5x"}, {4, "4x"}, {5, "5x"}, {6, "6x"}, {7, "7x"}, {8, "8x"}, {9, "9x"}, {10, "10x"}}
 
 
 		formatIds = {"av1", "hevc", "webm-vp9", "mp4", "mp4-nvenc", "mp4-compat", "webm-vp8", "gif", "mp3", "raw"}
@@ -177,7 +177,7 @@ class EncodeOptionsPage extends Page
 			-- {"target_filesize", Option("int", "Target Filesize", options.target_filesize, filesizeOpts)},
 			{"crf", Option("int", "CRF", options.crf, crfOpts)},
 			{"fps", Option("list", "FPS", options.fps, fpsOpts)},
-			{"video_speed", Option("list", "Video Speed", options.video_speed, speedOpts, -> @options[1][2]\getValue! == "mp4")},
+			{"video_speed", Option("list", "Video Speed", options.video_speed, speedOpts, -> @options[1][2]\getValue! == "mp4" or @options[1][2]\getValue! == "mp4-compat")},
 			{"gif_dither", Option("list", "GIF Dither Type", options.gif_dither, gifDitherOpts, -> @options[1][2]\getValue! == "gif")},
 			-- {"force_square_pixels", Option("bool", "Force Square Pixels", options.force_square_pixels)},
 		}
