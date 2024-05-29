@@ -57,10 +57,15 @@ class MainPage extends Page
 		-- get source and output video properties
 		source_fps = mp.get_property_number("container-fps")
 		source_height = mp.get_property("height")
+		source_width = mp.get_property("width")
+		source_ratio = source_width / source_height
 		output_height = options.scale_height
 		output_fps = options.fps
 		if output_height < 0
 			output_height = source_height
+		output_width = output_height * source_ratio
+		if output_width > 8192
+			ass\append("(#{bold('Width above 8192, no NVENC support!')})\\N\\N")
 		if output_fps < 0
 			output_fps = source_fps
 		ass\append("#{source_height}p#{math.floor(source_fps)} -> #{output_height}p#{math.floor(output_fps)}")
