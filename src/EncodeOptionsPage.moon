@@ -146,7 +146,7 @@ class EncodeOptionsPage extends Page
 		crfOpts =
 			step: 1
 			min: -1
-			max: 51
+			max: 63
 			altDisplayNames:
 				[-1]: "disabled"
 
