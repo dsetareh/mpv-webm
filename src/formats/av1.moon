@@ -9,16 +9,15 @@ class AV1 extends Format
 
 	getFlags: =>
 		{
-			"--ovcopts-add=bf=0",
-			"--ovcopts-add=preset=p7",
+			"--ovcopts-add=preset=slow",
 			"--ovcopts-add=rc=vbr",
 			"--ovcopts-add=tune=hq",
-			"--ovcopts-add=multipass=qres",
+			"--ovcopts-add=multipass=fullres",
 			"--ovcopts-add=spatial-aq=1",
-			"--ovcopts-add=aq-strength=12",
-			"--ovcopts-add=nonref_p=1",
+			"--ovcopts-add=temporal-aq=1",
+			"--ovcopts-add=aq-strength=8",
+			"--ovcopts-add=bf=3",
 			"--ovcopts-add=b_ref_mode=middle",
-			"--ovcopts-add=strict_gop=1",
 			"--ovcopts-add=rc-lookahead=32",
 			"--ovcopts-add=cq=#{options.crf}"
 		}
